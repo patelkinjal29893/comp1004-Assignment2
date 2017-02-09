@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace COMP1004_Assignment2_SharpAutoCenter
-{
+{    
     public partial class SharpAutoForm : Form
     {
         /// <summary>
@@ -53,7 +53,11 @@ namespace COMP1004_Assignment2_SharpAutoCenter
         /// <param name="e"></param>
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-              MessageBox.Show("This is for about message");
+            //1. Create a new AboutForm using About Box inbuilt form
+            AboutForm aboutForm = new AboutForm();
+
+            //2.Show the about form with ShowDialog
+            aboutForm.ShowDialog();
 
         }
         /// <summary>
@@ -230,6 +234,36 @@ namespace COMP1004_Assignment2_SharpAutoCenter
         private void SharpAutoFunctionalities(object sender, EventArgs e)
         {
             this._checkedEvent();
+
+        }
+        /// <summary>
+        /// Clear MenuStrip Handler
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void clearToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Set values to null
+            this.AmountDueTextBox.Text = "";
+            this.BasePriceTextBox.Text = "";
+            this.AdditionalOptionsTextBox.Text = "";
+            this.SubTotalTextBox.Text = "";
+            this.SalesTaxTextBox.Text = "";
+            this.TotalTextBox.Text = "";
+            this.TradeInAllowanceTextBox.Text = "";
+            this.AmountDueTextBox.Text = "";
+
+            // Set allchecked value to false
+            this.StereoSystemCheckBox.Checked = false;
+            this.ComputerNavigatorCheckBox.Checked = false;
+            this.LeatherInteriorCheckBox.Checked = false;
+
+            // Select default radio button
+            this.StandardRadioButton.Select();
+        }
+
+        private void calculateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
 
         }
     }

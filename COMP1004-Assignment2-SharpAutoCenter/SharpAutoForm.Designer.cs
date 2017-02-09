@@ -147,6 +147,7 @@
             this.calculateToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.C)));
             this.calculateToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.calculateToolStripMenuItem.Text = "&Calculate";
+            this.calculateToolStripMenuItem.Click += new System.EventHandler(this.calculateToolStripMenuItem_Click);
             // 
             // clearToolStripMenuItem
             // 
@@ -154,6 +155,7 @@
             this.clearToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.L)));
             this.clearToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.clearToolStripMenuItem.Text = "C&lear";
+            this.clearToolStripMenuItem.Click += new System.EventHandler(this.clearToolStripMenuItem_Click);
             // 
             // toolStripSeparator4
             // 
