@@ -31,7 +31,7 @@
             this.BasePriceLabel = new System.Windows.Forms.Label();
             this.AdditionalOptionsLabel = new System.Windows.Forms.Label();
             this.SubTotalLabel = new System.Windows.Forms.Label();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.AutoCenterMenuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,15 +57,17 @@
             this.ComputerNavigatorCheckBox = new System.Windows.Forms.CheckBox();
             this.StereoSystemCheckBox = new System.Windows.Forms.CheckBox();
             this.ExteriorFinishCheckBox = new System.Windows.Forms.GroupBox();
+            this.CustomizedDetailingRadioButton = new System.Windows.Forms.RadioButton();
+            this.PearlizedRadioButton = new System.Windows.Forms.RadioButton();
+            this.StandardRadioButton = new System.Windows.Forms.RadioButton();
             this.CalculateButton = new System.Windows.Forms.Button();
             this.ClearButton = new System.Windows.Forms.Button();
             this.ExitButton = new System.Windows.Forms.Button();
             this.TradeInAllowanceLabel = new System.Windows.Forms.Label();
             this.TradeInAllowanceTextBox = new System.Windows.Forms.TextBox();
-            this.StandardRadioButton = new System.Windows.Forms.RadioButton();
-            this.PearlizedRadioButton = new System.Windows.Forms.RadioButton();
-            this.CustomizedDetailingRadioButton = new System.Windows.Forms.RadioButton();
-            this.menuStrip1.SuspendLayout();
+            this.colorDialogBox = new System.Windows.Forms.ColorDialog();
+            this.fontDialogBox = new System.Windows.Forms.FontDialog();
+            this.AutoCenterMenuStrip.SuspendLayout();
             this.AdditionalItemsGroupBox.SuspendLayout();
             this.ExteriorFinishCheckBox.SuspendLayout();
             this.SuspendLayout();
@@ -98,17 +100,16 @@
             this.SubTotalLabel.TabIndex = 3;
             this.SubTotalLabel.Text = "Sub Total :";
             // 
-            // menuStrip1
+            // AutoCenterMenuStrip
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.AutoCenterMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.editToolStripMenuItem,
             this.helpToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(434, 24);
-            this.menuStrip1.TabIndex = 4;
-            this.menuStrip1.Text = "menuStrip1";
+            this.AutoCenterMenuStrip.Location = new System.Drawing.Point(0, 0);
+            this.AutoCenterMenuStrip.Name = "AutoCenterMenuStrip";
+            this.AutoCenterMenuStrip.Size = new System.Drawing.Size(434, 24);
+            this.AutoCenterMenuStrip.TabIndex = 4;
             // 
             // fileToolStripMenuItem
             // 
@@ -123,8 +124,9 @@
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.X)));
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
             this.exitToolStripMenuItem.Text = "E&xit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
@@ -164,6 +166,7 @@
             this.fontToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F1)));
             this.fontToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.fontToolStripMenuItem.Text = "&Font...";
+            this.fontToolStripMenuItem.Click += new System.EventHandler(this.fontToolStripMenuItem_Click);
             // 
             // colorToolStripMenuItem
             // 
@@ -171,6 +174,7 @@
             this.colorToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F2)));
             this.colorToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.colorToolStripMenuItem.Text = "&Color...";
+            this.colorToolStripMenuItem.Click += new System.EventHandler(this.colorToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -185,14 +189,15 @@
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(142, 6);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.A)));
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.aboutToolStripMenuItem.Text = "&About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // SalesTaxLabel
             // 
@@ -323,6 +328,38 @@
             this.ExteriorFinishCheckBox.TabStop = false;
             this.ExteriorFinishCheckBox.Text = "Exterior Finish";
             // 
+            // CustomizedDetailingRadioButton
+            // 
+            this.CustomizedDetailingRadioButton.AutoSize = true;
+            this.CustomizedDetailingRadioButton.Location = new System.Drawing.Point(24, 69);
+            this.CustomizedDetailingRadioButton.Name = "CustomizedDetailingRadioButton";
+            this.CustomizedDetailingRadioButton.Size = new System.Drawing.Size(123, 17);
+            this.CustomizedDetailingRadioButton.TabIndex = 0;
+            this.CustomizedDetailingRadioButton.Text = "Customized Detailing";
+            this.CustomizedDetailingRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // PearlizedRadioButton
+            // 
+            this.PearlizedRadioButton.AutoSize = true;
+            this.PearlizedRadioButton.Location = new System.Drawing.Point(24, 43);
+            this.PearlizedRadioButton.Name = "PearlizedRadioButton";
+            this.PearlizedRadioButton.Size = new System.Drawing.Size(68, 17);
+            this.PearlizedRadioButton.TabIndex = 0;
+            this.PearlizedRadioButton.Text = "Pearlized";
+            this.PearlizedRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // StandardRadioButton
+            // 
+            this.StandardRadioButton.AutoSize = true;
+            this.StandardRadioButton.Checked = true;
+            this.StandardRadioButton.Location = new System.Drawing.Point(24, 20);
+            this.StandardRadioButton.Name = "StandardRadioButton";
+            this.StandardRadioButton.Size = new System.Drawing.Size(68, 17);
+            this.StandardRadioButton.TabIndex = 0;
+            this.StandardRadioButton.TabStop = true;
+            this.StandardRadioButton.Text = "Standard";
+            this.StandardRadioButton.UseVisualStyleBackColor = true;
+            // 
             // CalculateButton
             // 
             this.CalculateButton.Location = new System.Drawing.Point(27, 318);
@@ -340,6 +377,7 @@
             this.ClearButton.TabIndex = 7;
             this.ClearButton.Text = "Clear";
             this.ClearButton.UseVisualStyleBackColor = true;
+            this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
             // ExitButton
             // 
@@ -349,6 +387,7 @@
             this.ExitButton.TabIndex = 7;
             this.ExitButton.Text = "Exit";
             this.ExitButton.UseVisualStyleBackColor = true;
+            this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
             // 
             // TradeInAllowanceLabel
             // 
@@ -366,38 +405,6 @@
             this.TradeInAllowanceTextBox.Size = new System.Drawing.Size(100, 20);
             this.TradeInAllowanceTextBox.TabIndex = 5;
             this.TradeInAllowanceTextBox.Text = "0";
-            // 
-            // StandardRadioButton
-            // 
-            this.StandardRadioButton.AutoSize = true;
-            this.StandardRadioButton.Checked = true;
-            this.StandardRadioButton.Location = new System.Drawing.Point(24, 20);
-            this.StandardRadioButton.Name = "StandardRadioButton";
-            this.StandardRadioButton.Size = new System.Drawing.Size(68, 17);
-            this.StandardRadioButton.TabIndex = 0;
-            this.StandardRadioButton.TabStop = true;
-            this.StandardRadioButton.Text = "Standard";
-            this.StandardRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // PearlizedRadioButton
-            // 
-            this.PearlizedRadioButton.AutoSize = true;
-            this.PearlizedRadioButton.Location = new System.Drawing.Point(24, 43);
-            this.PearlizedRadioButton.Name = "PearlizedRadioButton";
-            this.PearlizedRadioButton.Size = new System.Drawing.Size(68, 17);
-            this.PearlizedRadioButton.TabIndex = 0;
-            this.PearlizedRadioButton.Text = "Pearlized";
-            this.PearlizedRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // CustomizedDetailingRadioButton
-            // 
-            this.CustomizedDetailingRadioButton.AutoSize = true;
-            this.CustomizedDetailingRadioButton.Location = new System.Drawing.Point(24, 69);
-            this.CustomizedDetailingRadioButton.Name = "CustomizedDetailingRadioButton";
-            this.CustomizedDetailingRadioButton.Size = new System.Drawing.Size(123, 17);
-            this.CustomizedDetailingRadioButton.TabIndex = 0;
-            this.CustomizedDetailingRadioButton.Text = "Customized Detailing";
-            this.CustomizedDetailingRadioButton.UseVisualStyleBackColor = true;
             // 
             // SharpAutoForm
             // 
@@ -423,11 +430,11 @@
             this.Controls.Add(this.SubTotalLabel);
             this.Controls.Add(this.AdditionalOptionsLabel);
             this.Controls.Add(this.BasePriceLabel);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.AutoCenterMenuStrip);
             this.Name = "SharpAutoForm";
             this.Text = "Auto Center";
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.AutoCenterMenuStrip.ResumeLayout(false);
+            this.AutoCenterMenuStrip.PerformLayout();
             this.AdditionalItemsGroupBox.ResumeLayout(false);
             this.AdditionalItemsGroupBox.PerformLayout();
             this.ExteriorFinishCheckBox.ResumeLayout(false);
@@ -441,7 +448,7 @@
         private System.Windows.Forms.Label BasePriceLabel;
         private System.Windows.Forms.Label AdditionalOptionsLabel;
         private System.Windows.Forms.Label SubTotalLabel;
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip AutoCenterMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
@@ -475,6 +482,8 @@
         private System.Windows.Forms.RadioButton CustomizedDetailingRadioButton;
         private System.Windows.Forms.RadioButton PearlizedRadioButton;
         private System.Windows.Forms.RadioButton StandardRadioButton;
+        private System.Windows.Forms.ColorDialog colorDialogBox;
+        private System.Windows.Forms.FontDialog fontDialogBox;
     }
 }
 
