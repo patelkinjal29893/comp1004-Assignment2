@@ -105,8 +105,8 @@ namespace COMP1004_Assignment2_SharpAutoCenter
             this.StandardRadioButton.Select();
 
             //Change color property to default white
-            this.AmountDueTextBox.BackColor = Color.White;
-            this.BasePriceTextBox.BackColor = Color.White;
+            AmountDueTextBox.BackColor = Color.White;
+            BasePriceTextBox.BackColor = Color.White;
 
         }
     }
