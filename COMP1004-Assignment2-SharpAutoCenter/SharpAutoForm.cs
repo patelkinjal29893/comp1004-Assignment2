@@ -78,10 +78,35 @@ namespace COMP1004_Assignment2_SharpAutoCenter
             AmountDueTextBox.BackColor = colorDialogBox.Color;
             BasePriceTextBox.BackColor = colorDialogBox.Color;
         }
+        /// <summary>
+        /// Clear Button handler for set all values of each controls to null or default
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <param name="form"></param>
 
         private void ClearButton_Click(object sender, EventArgs e)
         {
-            
+            // Set values to null
+            this.AmountDueTextBox = null;
+            this.BasePriceTextBox = null;
+            this.SubTotalTextBox = null;
+            this.SalesTaxTextBox = null;
+            this.TotalTextBox = null;
+            this.TradeInAllowanceTextBox = null;
+            this.AmountDueTextBox = null;
+
+            // Set allchecked value to false
+            this.StereoSystemCheckBox.Checked = false;
+            this.ComputerNavigatorCheckBox.Checked = false;
+            this.LeatherInteriorCheckBox.Checked = false;
+
+            // Select default radio button
+            this.StandardRadioButton.Select();
+
+            //Change color property to default white
+            AmountDueTextBox.BackColor = Color.White;
+            BasePriceTextBox.BackColor = Color.White;
 
         }
     }
