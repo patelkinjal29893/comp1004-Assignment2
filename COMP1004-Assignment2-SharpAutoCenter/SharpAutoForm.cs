@@ -88,13 +88,14 @@ namespace COMP1004_Assignment2_SharpAutoCenter
         private void ClearButton_Click(object sender, EventArgs e)
         {
             // Set values to null
-            this.AmountDueTextBox = null;
-            this.BasePriceTextBox = null;
-            this.SubTotalTextBox = null;
-            this.SalesTaxTextBox = null;
-            this.TotalTextBox = null;
-            this.TradeInAllowanceTextBox = null;
-            this.AmountDueTextBox = null;
+            this.AmountDueTextBox.Text = "";
+            this.BasePriceTextBox.Text = "";
+            this.AdditionalOptionsTextBox.Text = "";
+            this.SubTotalTextBox.Text = "";
+            this.SalesTaxTextBox.Text = "";
+            this.TotalTextBox.Text = "";
+            this.TradeInAllowanceTextBox.Text = "";
+            this.AmountDueTextBox.Text = "";
 
             // Set allchecked value to false
             this.StereoSystemCheckBox.Checked = false;
@@ -110,33 +111,117 @@ namespace COMP1004_Assignment2_SharpAutoCenter
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void _checkedEvent(bool value)
+        private void _checkedEvent()
         {
             const double StereoSystem = 380.75;
+            double stereoHolder = 0;
             const double Leather = 832.50;
+            double leatherHolder = 0;
             const double Navigator = 1470.99;
+            double navHolder = 0;
             const double Detailing = 495.58;
+            double detailingHolder = 0;
             const double Pearlizing = 364.83;
+            double perlHolder = 0;
 
-            if (StereoSystemCheckBox.Checked == true)
+            if (StereoSystemCheckBox.Checked)
             {
-                AdditionalOptionsTextBox.Text += StereoSystem;
+                if (AdditionalOptionsTextBox.Text == "")
+                {
+                    AdditionalOptionsTextBox.Text = (StereoSystem).ToString();
+                }
+                else if (AdditionalOptionsTextBox.Text != "")
+                {
+                    stereoHolder = Convert.ToDouble((AdditionalOptionsTextBox.Text as string).TrimStart('$'));
+                    AdditionalOptionsTextBox.Text = (stereoHolder + StereoSystem).ToString();
+                }
+                else
+                {
+                    stereoHolder = Convert.ToDouble((AdditionalOptionsTextBox.Text as string).TrimStart('$'));
+                    stereoHolder = stereoHolder - StereoSystem;
+                    //AdditionalOptionsTextBox.Text = "$" + stereoHolder.ToString();
+                }
+
             }
-            if (LeatherInteriorCheckBox.Checked == true)
+
+            if (LeatherInteriorCheckBox.Checked)
             {
-                AdditionalOptionsTextBox.Text += Leather;
+                if (AdditionalOptionsTextBox.Text == "")
+                {
+                    AdditionalOptionsTextBox.Text = (Leather).ToString();
+                }
+                else if (AdditionalOptionsTextBox.Text != "")
+                {
+                    leatherHolder = Convert.ToDouble((AdditionalOptionsTextBox.Text as string).TrimStart('$'));
+                    AdditionalOptionsTextBox.Text = (leatherHolder + Leather).ToString();
+                }
+               
             }
-            if (ComputerNavigatorCheckBox.Checked == true)
+
+            else
             {
-                AdditionalOptionsTextBox.Text += Navigator;
+                leatherHolder = Convert.ToDouble((AdditionalOptionsTextBox.Text as string).TrimStart('$'));
+                leatherHolder = leatherHolder - Leather;
+                //AdditionalOptionsTextBox.Text = "$" + leatherHolder.ToString();
             }
-            if (CustomizedDetailingRadioButton.Checked == true)
+
+            if (ComputerNavigatorCheckBox.Checked)
             {
-                AdditionalOptionsTextBox.Text += Detailing;
+                if (AdditionalOptionsTextBox.Text == "")
+                {
+                    AdditionalOptionsTextBox.Text = (Navigator).ToString();
+                }
+                else if (AdditionalOptionsTextBox.Text != "")
+                {
+                    navHolder = Convert.ToDouble((AdditionalOptionsTextBox.Text as string).TrimStart('$'));
+                    AdditionalOptionsTextBox.Text = (navHolder + Navigator).ToString();
+                }
+                                
             }
-            if (PearlizedRadioButton.Checked == true)
+            else
             {
-                AdditionalOptionsTextBox.Text += Pearlizing;
+                navHolder = Convert.ToDouble((AdditionalOptionsTextBox.Text as string).TrimStart('$'));
+                navHolder = navHolder - Navigator;
+                //AdditionalOptionsTextBox.Text = "$" + navHolder.ToString();
+            }
+
+            if (CustomizedDetailingRadioButton.Checked)
+            {
+                if (AdditionalOptionsTextBox.Text == "")
+                {
+                    AdditionalOptionsTextBox.Text = (Detailing).ToString();
+                }
+                else if (AdditionalOptionsTextBox.Text != "")
+                {
+                    detailingHolder = Convert.ToDouble((AdditionalOptionsTextBox.Text as string).TrimStart('$'));
+                    AdditionalOptionsTextBox.Text = (detailingHolder + Detailing).ToString();
+                }
+              
+            }
+            else
+            {
+                detailingHolder = Convert.ToDouble((AdditionalOptionsTextBox.Text as string).TrimStart('$'));
+                detailingHolder = detailingHolder - Detailing;
+                //AdditionalOptionsTextBox.Text = "$" + detailingHolder.ToString();
+            }
+
+            if (PearlizedRadioButton.Checked)
+            {
+                if (AdditionalOptionsTextBox.Text == "")
+                {
+                    AdditionalOptionsTextBox.Text = (Pearlizing).ToString();
+                }
+                else if (AdditionalOptionsTextBox.Text != "")
+                {
+                    perlHolder = Convert.ToDouble((AdditionalOptionsTextBox.Text as string).TrimStart('$'));
+                    AdditionalOptionsTextBox.Text = (perlHolder + Navigator).ToString();
+                }
+            }
+            else
+            {
+                perlHolder = Convert.ToDouble((AdditionalOptionsTextBox.Text as string).TrimStart('$'));
+                perlHolder = perlHolder - Pearlizing;
+                AdditionalOptionsTextBox.Text = "$" + perlHolder.ToString();
             }
 
             // Display the Additional options Price in the appropriate TextBox
@@ -193,10 +278,10 @@ namespace COMP1004_Assignment2_SharpAutoCenter
             _amountDue = _total - _allowance;
 
             
-            SubTotalTextBox.Text = Convert.ToString(_subTotal);
-            SalesTaxTextBox.Text = Convert.ToString(_salesTax);
-            TotalTextBox.Text = Convert.ToString(_total);
-            AmountDueTextBox.Text = Convert.ToString(_amountDue);
+            SubTotalTextBox.Text = "$" + Convert.ToString(_subTotal);
+            SalesTaxTextBox.Text = "$" + Convert.ToString(_salesTax);
+            TotalTextBox.Text = "$" + Convert.ToString(_total);
+            AmountDueTextBox.Text ="$" + Convert.ToString(_amountDue);
         }
         /// <summary>
         /// Stereo System Handler
@@ -205,14 +290,54 @@ namespace COMP1004_Assignment2_SharpAutoCenter
         /// <param name="e"></param>
         private void StereoSystemCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            _checkedEvent(StereoSystemCheckBox.Checked);
-            _checkedEvent(LeatherInteriorCheckBox.Checked);
-            _checkedEvent(ComputerNavigatorCheckBox.Checked);
-
-            _checkedEvent(StandardRadioButton.Checked);
-            _checkedEvent(PearlizedRadioButton.Checked);
-            _checkedEvent(CustomizedDetailingRadioButton.Checked);
+            _checkedEvent();
         }
+        /// <summary>
+        /// Leather Interior Handler
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LeatherInteriorCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            _checkedEvent();
+        }
+        /// <summary>
+        /// Computer Navigator Handler
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ComputerNavigatorCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            _checkedEvent();
+        }
+        /// <summary>
+        /// Standard Radio Button Handler
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void StandardRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            _checkedEvent();
+        }
+        /// <summary>
+        /// Pearlized Radio Button Handler
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PearlizedRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            _checkedEvent();
+        }
+        /// <summary>
+        /// CustomizedDetailing Radio Button Handler
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CustomizedDetailingRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            _checkedEvent();
+        }
+
     }
 }
 

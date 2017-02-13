@@ -295,6 +295,7 @@
             this.LeatherInteriorCheckBox.TabIndex = 0;
             this.LeatherInteriorCheckBox.Text = "Leather Interior";
             this.LeatherInteriorCheckBox.UseVisualStyleBackColor = true;
+            this.LeatherInteriorCheckBox.CheckedChanged += new System.EventHandler(this.LeatherInteriorCheckBox_CheckedChanged);
             // 
             // ComputerNavigatorCheckBox
             // 
@@ -305,6 +306,7 @@
             this.ComputerNavigatorCheckBox.TabIndex = 0;
             this.ComputerNavigatorCheckBox.Text = "Computer Navigator";
             this.ComputerNavigatorCheckBox.UseVisualStyleBackColor = true;
+            this.ComputerNavigatorCheckBox.CheckedChanged += new System.EventHandler(this.ComputerNavigatorCheckBox_CheckedChanged);
             // 
             // StereoSystemCheckBox
             // 
@@ -338,6 +340,7 @@
             this.CustomizedDetailingRadioButton.TabIndex = 0;
             this.CustomizedDetailingRadioButton.Text = "Customized Detailing";
             this.CustomizedDetailingRadioButton.UseVisualStyleBackColor = true;
+            this.CustomizedDetailingRadioButton.CheckedChanged += new System.EventHandler(this.CustomizedDetailingRadioButton_CheckedChanged);
             // 
             // PearlizedRadioButton
             // 
@@ -348,6 +351,7 @@
             this.PearlizedRadioButton.TabIndex = 0;
             this.PearlizedRadioButton.Text = "Pearlized";
             this.PearlizedRadioButton.UseVisualStyleBackColor = true;
+            this.PearlizedRadioButton.CheckedChanged += new System.EventHandler(this.PearlizedRadioButton_CheckedChanged);
             // 
             // StandardRadioButton
             // 
@@ -360,6 +364,7 @@
             this.StandardRadioButton.TabStop = true;
             this.StandardRadioButton.Text = "Standard";
             this.StandardRadioButton.UseVisualStyleBackColor = true;
+            this.StandardRadioButton.CheckedChanged += new System.EventHandler(this.StandardRadioButton_CheckedChanged);
             // 
             // CalculateButton
             // 
@@ -434,6 +439,7 @@
             this.Controls.Add(this.BasePriceLabel);
             this.Controls.Add(this.AutoCenterMenuStrip);
             this.Name = "SharpAutoForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Auto Center";
             this.AutoCenterMenuStrip.ResumeLayout(false);
             this.AutoCenterMenuStrip.PerformLayout();
