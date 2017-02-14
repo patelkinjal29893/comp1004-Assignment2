@@ -295,7 +295,7 @@
             this.LeatherInteriorCheckBox.TabIndex = 0;
             this.LeatherInteriorCheckBox.Text = "Leather Interior";
             this.LeatherInteriorCheckBox.UseVisualStyleBackColor = true;
-            this.LeatherInteriorCheckBox.CheckedChanged += new System.EventHandler(this.LeatherInteriorCheckBox_CheckedChanged);
+            this.LeatherInteriorCheckBox.CheckedChanged += new System.EventHandler(this.SharpAutoFunctionalities);
             // 
             // ComputerNavigatorCheckBox
             // 
@@ -306,7 +306,7 @@
             this.ComputerNavigatorCheckBox.TabIndex = 0;
             this.ComputerNavigatorCheckBox.Text = "Computer Navigator";
             this.ComputerNavigatorCheckBox.UseVisualStyleBackColor = true;
-            this.ComputerNavigatorCheckBox.CheckedChanged += new System.EventHandler(this.ComputerNavigatorCheckBox_CheckedChanged);
+            this.ComputerNavigatorCheckBox.CheckedChanged += new System.EventHandler(this.SharpAutoFunctionalities);
             // 
             // StereoSystemCheckBox
             // 
@@ -317,7 +317,7 @@
             this.StereoSystemCheckBox.TabIndex = 0;
             this.StereoSystemCheckBox.Text = "Stereo System";
             this.StereoSystemCheckBox.UseVisualStyleBackColor = true;
-            this.StereoSystemCheckBox.CheckedChanged += new System.EventHandler(this.StereoSystemCheckBox_CheckedChanged);
+            this.StereoSystemCheckBox.CheckedChanged += new System.EventHandler(this.SharpAutoFunctionalities);
             // 
             // ExteriorFinishCheckBox
             // 
@@ -340,7 +340,7 @@
             this.CustomizedDetailingRadioButton.TabIndex = 0;
             this.CustomizedDetailingRadioButton.Text = "Customized Detailing";
             this.CustomizedDetailingRadioButton.UseVisualStyleBackColor = true;
-            this.CustomizedDetailingRadioButton.CheckedChanged += new System.EventHandler(this.CustomizedDetailingRadioButton_CheckedChanged);
+            this.CustomizedDetailingRadioButton.CheckedChanged += new System.EventHandler(this.SharpAutoFunctionalities);
             // 
             // PearlizedRadioButton
             // 
@@ -351,7 +351,7 @@
             this.PearlizedRadioButton.TabIndex = 0;
             this.PearlizedRadioButton.Text = "Pearlized";
             this.PearlizedRadioButton.UseVisualStyleBackColor = true;
-            this.PearlizedRadioButton.CheckedChanged += new System.EventHandler(this.PearlizedRadioButton_CheckedChanged);
+            this.PearlizedRadioButton.CheckedChanged += new System.EventHandler(this.SharpAutoFunctionalities);
             // 
             // StandardRadioButton
             // 
@@ -364,7 +364,7 @@
             this.StandardRadioButton.TabStop = true;
             this.StandardRadioButton.Text = "Standard";
             this.StandardRadioButton.UseVisualStyleBackColor = true;
-            this.StandardRadioButton.CheckedChanged += new System.EventHandler(this.StandardRadioButton_CheckedChanged);
+            this.StandardRadioButton.CheckedChanged += new System.EventHandler(this.SharpAutoFunctionalities);
             // 
             // CalculateButton
             // 

@@ -114,118 +114,45 @@ namespace COMP1004_Assignment2_SharpAutoCenter
         private void _checkedEvent()
         {
             const double StereoSystem = 380.75;
-            double stereoHolder = 0;
+           // double stereoHolder = 0;
             const double Leather = 832.50;
-            double leatherHolder = 0;
+            //double leatherHolder = 0;
             const double Navigator = 1470.99;
-            double navHolder = 0;
+            //double navHolder = 0;
             const double Detailing = 495.58;
-            double detailingHolder = 0;
+            //double detailingHolder = 0;
             const double Pearlizing = 364.83;
-            double perlHolder = 0;
+           // double perlHolder = 0;
+            double value = 0.0;
 
             if (StereoSystemCheckBox.Checked)
             {
-                if (AdditionalOptionsTextBox.Text == "")
-                {
-                    AdditionalOptionsTextBox.Text = (StereoSystem).ToString();
-                }
-                else if (AdditionalOptionsTextBox.Text != "")
-                {
-                    stereoHolder = Convert.ToDouble((AdditionalOptionsTextBox.Text as string).TrimStart('$'));
-                    AdditionalOptionsTextBox.Text = (stereoHolder + StereoSystem).ToString();
-                }
-                else
-                {
-                    stereoHolder = Convert.ToDouble((AdditionalOptionsTextBox.Text as string).TrimStart('$'));
-                    stereoHolder = stereoHolder - StereoSystem;
-                    //AdditionalOptionsTextBox.Text = "$" + stereoHolder.ToString();
-                }
-
+                value += StereoSystem;
             }
-
             if (LeatherInteriorCheckBox.Checked)
             {
-                if (AdditionalOptionsTextBox.Text == "")
-                {
-                    AdditionalOptionsTextBox.Text = (Leather).ToString();
-                }
-                else if (AdditionalOptionsTextBox.Text != "")
-                {
-                    leatherHolder = Convert.ToDouble((AdditionalOptionsTextBox.Text as string).TrimStart('$'));
-                    AdditionalOptionsTextBox.Text = (leatherHolder + Leather).ToString();
-                }
-               
+                value += Leather;
             }
-
-            else
-            {
-                leatherHolder = Convert.ToDouble((AdditionalOptionsTextBox.Text as string).TrimStart('$'));
-                leatherHolder = leatherHolder - Leather;
-                //AdditionalOptionsTextBox.Text = "$" + leatherHolder.ToString();
-            }
-
             if (ComputerNavigatorCheckBox.Checked)
             {
-                if (AdditionalOptionsTextBox.Text == "")
-                {
-                    AdditionalOptionsTextBox.Text = (Navigator).ToString();
-                }
-                else if (AdditionalOptionsTextBox.Text != "")
-                {
-                    navHolder = Convert.ToDouble((AdditionalOptionsTextBox.Text as string).TrimStart('$'));
-                    AdditionalOptionsTextBox.Text = (navHolder + Navigator).ToString();
-                }
-                                
+                value += Navigator;
             }
-            else
+            if (StandardRadioButton.Checked)
             {
-                navHolder = Convert.ToDouble((AdditionalOptionsTextBox.Text as string).TrimStart('$'));
-                navHolder = navHolder - Navigator;
-                //AdditionalOptionsTextBox.Text = "$" + navHolder.ToString();
+                value += 0.0;
             }
-
             if (CustomizedDetailingRadioButton.Checked)
             {
-                if (AdditionalOptionsTextBox.Text == "")
-                {
-                    AdditionalOptionsTextBox.Text = (Detailing).ToString();
-                }
-                else if (AdditionalOptionsTextBox.Text != "")
-                {
-                    detailingHolder = Convert.ToDouble((AdditionalOptionsTextBox.Text as string).TrimStart('$'));
-                    AdditionalOptionsTextBox.Text = (detailingHolder + Detailing).ToString();
-                }
-              
+               value += Detailing;
             }
-            else
-            {
-                detailingHolder = Convert.ToDouble((AdditionalOptionsTextBox.Text as string).TrimStart('$'));
-                detailingHolder = detailingHolder - Detailing;
-                //AdditionalOptionsTextBox.Text = "$" + detailingHolder.ToString();
-            }
-
             if (PearlizedRadioButton.Checked)
             {
-                if (AdditionalOptionsTextBox.Text == "")
-                {
-                    AdditionalOptionsTextBox.Text = (Pearlizing).ToString();
-                }
-                else if (AdditionalOptionsTextBox.Text != "")
-                {
-                    perlHolder = Convert.ToDouble((AdditionalOptionsTextBox.Text as string).TrimStart('$'));
-                    AdditionalOptionsTextBox.Text = (perlHolder + Navigator).ToString();
-                }
-            }
-            else
-            {
-                perlHolder = Convert.ToDouble((AdditionalOptionsTextBox.Text as string).TrimStart('$'));
-                perlHolder = perlHolder - Pearlizing;
-                AdditionalOptionsTextBox.Text = "$" + perlHolder.ToString();
+                value += Pearlizing;
             }
 
-            // Display the Additional options Price in the appropriate TextBox
-            AdditionalOptionsTextBox.Text = (AdditionalOptionsTextBox.Text.ToString());
+            AdditionalOptionsTextBox.Text = value.ToString("c");
+
+
         }
       
         /// <summary>
@@ -247,7 +174,8 @@ namespace COMP1004_Assignment2_SharpAutoCenter
             //TRY & CATCH blocks
             try
             {
-                _basePrice = Convert.ToDouble(BasePriceTextBox.Text);
+                _basePrice = Convert.ToDouble((BasePriceTextBox.Text as string).TrimStart('$'));
+               
             }
             catch
             {
@@ -255,7 +183,7 @@ namespace COMP1004_Assignment2_SharpAutoCenter
             }
             try
             {
-                _additionalOptions = Convert.ToDouble(AdditionalOptionsTextBox.Text);
+                _additionalOptions = Convert.ToDouble((AdditionalOptionsTextBox.Text as string).TrimStart('$'));
             }
             catch
             {
@@ -264,80 +192,46 @@ namespace COMP1004_Assignment2_SharpAutoCenter
 
             try
             {
-                _allowance = Convert.ToDouble(TradeInAllowanceTextBox.Text);
+                _allowance = Convert.ToDouble((TradeInAllowanceTextBox.Text as string).TrimStart('$'));
+                if (_allowance < 0)
+                {
+                    MessageBox.Show("You can enter Less than 0");
+                    TradeInAllowanceTextBox.Text = "0";
+                    _allowance = 0;
+                    
+                }
             }
             catch
             {
                 _allowance = 0;
             }
-           
-            //Calculation for SalesTax , SubTotal and AmountDue
-            _subTotal = _additionalOptions + _basePrice;
-            _salesTax = _subTotal * 0.13;
-            _total = _subTotal + _salesTax;
-            _amountDue = _total - _allowance;
+            if (_basePrice < 0)
+            {
+                MessageBox.Show("You can enter Less than 0");
+                BasePriceTextBox.Text = "0";
+            }
+            else
+            {
 
-            
-            SubTotalTextBox.Text = "$" + Convert.ToString(_subTotal);
-            SalesTaxTextBox.Text = "$" + Convert.ToString(_salesTax);
-            TotalTextBox.Text = "$" + Convert.ToString(_total);
-            AmountDueTextBox.Text ="$" + Convert.ToString(_amountDue);
-        }
-        /// <summary>
-        /// Stereo System Handler
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void StereoSystemCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            _checkedEvent();
-        }
-        /// <summary>
-        /// Leather Interior Handler
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void LeatherInteriorCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            _checkedEvent();
-        }
-        /// <summary>
-        /// Computer Navigator Handler
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ComputerNavigatorCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            _checkedEvent();
-        }
-        /// <summary>
-        /// Standard Radio Button Handler
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void StandardRadioButton_CheckedChanged(object sender, EventArgs e)
-        {
-            _checkedEvent();
-        }
-        /// <summary>
-        /// Pearlized Radio Button Handler
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void PearlizedRadioButton_CheckedChanged(object sender, EventArgs e)
-        {
-            _checkedEvent();
-        }
-        /// <summary>
-        /// CustomizedDetailing Radio Button Handler
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void CustomizedDetailingRadioButton_CheckedChanged(object sender, EventArgs e)
-        {
-            _checkedEvent();
+                //Calculation for SalesTax , SubTotal and AmountDue
+                _subTotal = System.Math.Round(_additionalOptions + _basePrice, 2);
+                _salesTax = System.Math.Round(_subTotal * 0.13, 2);
+                _total = System.Math.Round(_subTotal + _salesTax, 2);
+                _amountDue = System.Math.Round((_total - _allowance), 2);
+
+
+                SubTotalTextBox.Text = "$" + Convert.ToString(_subTotal);
+                SalesTaxTextBox.Text = "$" + Convert.ToString(_salesTax);
+                TotalTextBox.Text = "$" + Convert.ToString(_total);
+                AmountDueTextBox.Text = "$" + Convert.ToString(_amountDue);
+            }
         }
 
+        private void SharpAutoFunctionalities(object sender, EventArgs e)
+        {
+            this._checkedEvent();
+
+        }
     }
 }
 
