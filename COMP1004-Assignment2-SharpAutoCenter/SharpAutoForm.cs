@@ -1,7 +1,7 @@
 ﻿//AppName : Sharp Auto Center
 //Author's Name : Kinjal Patel  
 //Student ID : 200334364
-//App Creation Date : 2nd Feb, 2017
+//App Creation Date : 6th February, 2017
 //App Description : This is an Appication for Sharp Auto Center with Different cars with different functionalities.
 
 using System;
@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace COMP1004_Assignment2_SharpAutoCenter
-{    
+{
     public partial class SharpAutoForm : Form
     {
         /// <summary>
@@ -88,10 +88,9 @@ namespace COMP1004_Assignment2_SharpAutoCenter
         /// <param name="sender"></param>
         /// <param name="e"></param>
         /// <param name="form"></param>
-
         private void ClearButton_Click(object sender, EventArgs e)
         {
-            // Set values to null
+            // Set all textboxes to blank
             this.AmountDueTextBox.Text = "";
             this.BasePriceTextBox.Text = "";
             this.AdditionalOptionsTextBox.Text = "";
@@ -101,7 +100,7 @@ namespace COMP1004_Assignment2_SharpAutoCenter
             this.TradeInAllowanceTextBox.Text = "";
             this.AmountDueTextBox.Text = "";
 
-            // Set allchecked value to false
+            // Set all checkboxes value to false
             this.StereoSystemCheckBox.Checked = false;
             this.ComputerNavigatorCheckBox.Checked = false;
             this.LeatherInteriorCheckBox.Checked = false;
@@ -117,16 +116,12 @@ namespace COMP1004_Assignment2_SharpAutoCenter
         /// <param name="e"></param>
         private void _checkedEvent()
         {
-            const double StereoSystem = 380.75;
-           // double stereoHolder = 0;
-            const double Leather = 832.50;
-            //double leatherHolder = 0;
+            const double StereoSystem = 380.75;           
+            const double Leather = 832.50;          
             const double Navigator = 1470.99;
-            //double navHolder = 0;
-            const double Detailing = 495.58;
-            //double detailingHolder = 0;
-            const double Pearlizing = 364.83;
-           // double perlHolder = 0;
+            const double Standard = 0.0;          
+            const double Detailing = 495.58;            
+            const double Pearlizing = 364.83;           
             double value = 0.0;
 
             if (StereoSystemCheckBox.Checked)
@@ -143,22 +138,19 @@ namespace COMP1004_Assignment2_SharpAutoCenter
             }
             if (StandardRadioButton.Checked)
             {
-                value += 0.0;
+                value += Standard;
             }
             if (CustomizedDetailingRadioButton.Checked)
             {
-               value += Detailing;
+                value += Detailing;
             }
             if (PearlizedRadioButton.Checked)
             {
                 value += Pearlizing;
             }
-
             AdditionalOptionsTextBox.Text = value.ToString("c");
-
-
         }
-      
+
         /// <summary>
         /// Calculate Button Handler
         /// </summary>
@@ -168,47 +160,33 @@ namespace COMP1004_Assignment2_SharpAutoCenter
         {
             //variables
             double _basePrice;
-            double _additionalOptions;            
+            double _additionalOptions;
             double _subTotal;
             double _salesTax;
             double _total;
             double _allowance;
             double _amountDue;
-           
-            //TRY & CATCH blocks
+
+            //TRY & CATCH block           
             try
             {
                 _basePrice = Convert.ToDouble((BasePriceTextBox.Text as string).TrimStart('$'));
-               
-            }
-            catch
-            {
-                _basePrice = 0;
-            }
-            try
-            {
                 _additionalOptions = Convert.ToDouble((AdditionalOptionsTextBox.Text as string).TrimStart('$'));
-            }
-            catch
-            {
-                _additionalOptions = 0;
-            }
-
-            try
-            {
                 _allowance = Convert.ToDouble((TradeInAllowanceTextBox.Text as string).TrimStart('$'));
                 if (_allowance < 0)
                 {
                     MessageBox.Show("You can enter Less than 0");
                     TradeInAllowanceTextBox.Text = "0";
                     _allowance = 0;
-                    
                 }
             }
             catch
             {
+                _basePrice = 0;
+                _additionalOptions = 0;
                 _allowance = 0;
             }
+           
             if (_basePrice < 0)
             {
                 MessageBox.Show("You can enter Less than 0");
@@ -230,7 +208,11 @@ namespace COMP1004_Assignment2_SharpAutoCenter
                 AmountDueTextBox.Text = "$" + Convert.ToString(_amountDue);
             }
         }
-
+        /// <summary>
+        /// Private method for update checkBox and radioButton Values
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SharpAutoFunctionalities(object sender, EventArgs e)
         {
             this._checkedEvent();
@@ -243,7 +225,7 @@ namespace COMP1004_Assignment2_SharpAutoCenter
         /// <param name="e"></param>
         private void clearToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Set values to null
+            // Set all textbox to blank
             this.AmountDueTextBox.Text = "";
             this.BasePriceTextBox.Text = "";
             this.AdditionalOptionsTextBox.Text = "";
@@ -253,18 +235,13 @@ namespace COMP1004_Assignment2_SharpAutoCenter
             this.TradeInAllowanceTextBox.Text = "";
             this.AmountDueTextBox.Text = "";
 
-            // Set allchecked value to false
+            // Set all checkboxes value to false
             this.StereoSystemCheckBox.Checked = false;
             this.ComputerNavigatorCheckBox.Checked = false;
             this.LeatherInteriorCheckBox.Checked = false;
 
             // Select default radio button
             this.StandardRadioButton.Select();
-        }
-
-        private void calculateToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
